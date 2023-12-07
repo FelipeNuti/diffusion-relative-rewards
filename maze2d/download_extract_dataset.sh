@@ -3,7 +3,7 @@
 tar_url="https://thor.robots.ox.ac.uk/reward-diffusion/datasets_10m.tar"
 
 # Directory to extract the tar file
-extraction_path="./safe_stable_diffusion_data"
+extraction_path="./d4rl_datasets"
 
 # Create the target directory if it doesn't exist
 mkdir -p "$extraction_path"
