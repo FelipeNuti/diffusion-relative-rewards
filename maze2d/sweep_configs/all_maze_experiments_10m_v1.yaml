@@ -1,0 +1,69 @@
+method: grid
+metric:
+  name: accuracy
+  goal: maximize
+command:
+  - python 
+  - /users/<username>/code_remote/diffusion/diffuser/rrf_diffusion/train_gradient_matching.py 
+  - "--version"
+  - "v1"
+  - "--dataset_size"
+  - "10m" 
+  - "--log_freq" 
+  - "100" 
+  - "--sample_freq" 
+  - "1000" 
+  - "--n_train_steps"
+  - "100000"
+  - "--render_freq"
+  - "10000"
+  - "--save_freq"
+  - "10000"
+  - "--learning_rate"
+  - "0.00005"
+  - "--diffusion_predicts_mean"
+  - "True"
+  - "--buffer_dir"
+  - "/scratch/shared/beegfs/<username>/d4rl_preprocessed_buffers"
+  - "--logbase"
+  - "/scratch/shared/beegfs/<username>/maze-experiments"
+  - ${args}
+parameters:
+  dataset:
+    distribution: categorical
+    values:
+    - "maze2d-large-v1"
+    - "maze2d-open-v0"
+    - "maze2d-umaze-v0"
+    - "maze2d-medium-v1"
+  goal:
+    distribution: categorical
+    values:
+    - "goal1"
+    - "goal2"
+    - "goal3"
+    - "goal4"
+    - "goal5"
+    - "goal6"
+    - "goal7"
+    - "goal8"
+  train_dataset:
+    distribution: categorical
+    values:
+    - "general"
+    - "expert"
+    - "mixed" 
+  model_horizon:
+    distribution: categorical
+    values:
+    - 1
+    - 4
+    - 64
+    - 256
+  dim_mults:
+    distribution: categorical
+    values:
+    - "8" 
+    - "32,16,8"
+  
+  

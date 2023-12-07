@@ -1,0 +1,50 @@
+name: gradient_matching_large_sweep_grad_clip_no_noise_v1
+method: grid
+metric:
+  name: accuracy
+  goal: maximize
+command:
+  - python 
+  - /users/<username>/code_remote/locomotion_diffusion/diffuser/rrf_diffusion/train_gradient_matching.py
+  - "--s_general_path"
+  - "f:{logbase}/{dataset_name}-medium-replay-v2/diffusion/defaults_H{model_horizon}_T{n_diffusion_steps}"
+  - "--s_expert_path"
+  - "f:{logbase}/{dataset_name}-expert-v2/diffusion/defaults_H{model_horizon}_T{n_diffusion_steps}"
+  - "--n_train_steps"
+  - "50000"
+  # - "--general_epoch"
+  # - "45000"
+  - "--embed_dim" 
+  - "32"
+  - "--batch_size"
+  - "128"
+  - "--n_saves"
+  - "10"
+  - "--model_class"
+  - "models.ValueFunction"
+  - "--dim_mults"
+  - "16,16,32,32"
+  - "--norm"
+  - "groupnorm"
+  - "--noise_seed"
+  - "0"
+  - "--description"
+  - "f:sweep_v1_grad_clip_{gradient_clipping}_replay" 
+  - ${args}
+parameters:
+  dataset:
+    distribution: categorical
+    values:
+    - "halfcheetah-medium-replay-v2"
+    - "hopper-medium-replay-v2"
+    - "walker2d-medium-replay-v2"
+  gradient_clipping:
+    distribution: categorical
+    values:
+    - "0.05"
+    - "0.2"
+
+    
+
+  
+  

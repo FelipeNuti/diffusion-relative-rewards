@@ -1,0 +1,25 @@
+conda env create -f environment.yml
+conda activate env_diffuser
+pip install -e .
+
+cp -r  "/work/user/mujoco200" cd "/users/<username>/.mujoco/mujoco200" # create the folder structure if it does not exist yet
+
+Download mujoco key file from https://www.roboti.us/file/mjkey.txt and add it to "/users/<username>/.mujoco/"
+
+add "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/users/<username>/.mujoco/mujoco200/bin" to ~/.bashrc # change this to your username
+then source environment again and activate conda environment
+
+conda install -c conda-forge glew 
+conda install -c conda-forge mesalib 
+conda install -c conda-forge glfw
+conda install -c anaconda pyopengl
+
+export CPATH=$CONDA_PREFIX/include:/users/<username>/.mujoco/mujoco200/include
+
+pip install mujoco-py==2.0.2.13
+
+you should then be able to run:
+
+"python scripts/train.py --config config.maze2d --dataset maze2d-large-v1"
+
+

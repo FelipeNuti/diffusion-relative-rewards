@@ -1,0 +1,76 @@
+name: rollouts_large_sweep_L2reg_noised_v1
+method: grid
+metric:
+  name: score
+  goal: maximize
+command:
+  - python 
+  - scripts/plan_gradient_matching_parallel.py
+  - "--diffusion_loadpath"
+  - "f:{logbase}/{dataset_name}-medium-replay-v2/diffusion/noised_gaussian_{noise_level}_undertrained_H{horizon}_T{n_diffusion_steps}"
+  - "--value_loadpath"
+  - "f:{loadbase}/{dataset_name}-medium-replay-v2/gradient_matching/H{value_horizon}_D{value_train_dataset}_DIMS{value_dim_mults}_ARCH{value_class}_sweep_v1_l2_reg_{l2_reg}_noised_{noise_level}_replay"
+  - "--discount"
+  - "0.997"
+  - "--loadbase"
+  - "/scratch/shared/beegfs/<username>/locomotion_diffusion_logs/logs"
+  - "--n_guide_steps"
+  - "1"
+  - "--batch_size"
+  - "1"
+  - "--value_train_dataset"
+  - "mixed"
+  - "--vis_freq"
+  - "1000000000"
+  - "--max_episode_length"
+  - "1000"
+  - "--n_processes"
+  - "512"
+  - "--seed"
+  - "0"
+  - "--dataset"
+  - "halfcheetah-medium-replay-v2"
+  - "--description"
+  - "f:sweep_v1_l2_reg_{l2_reg}_noised_{noise_level}_replay" 
+  - ${args}
+parameters:
+  noise_level:
+    distribution: categorical
+    values:
+    - 0.5
+    - 0.1
+  l2_reg:
+    distribution: categorical
+    values:
+    - "0.0002"
+    - "0.00002"
+  value_class:
+    distribution: categorical
+    values:
+    - "models.ValueFunction"
+  value_dim_mults:
+    distribution: categorical
+    values:
+    - "16,16,32,32"
+  t_stopgrad:
+    distribution: categorical
+    values:
+    - 1
+    - 2
+    - 5
+    - 8
+    - 10
+  scale:
+    distribution: categorical
+    values:
+    - "0.5"
+    - "0.4"
+    - "0.3"
+    - "0.2"
+    - "0.1"
+    - "0.01"
+    - "0.001"
+    - "0.0" 
+
+  
+  

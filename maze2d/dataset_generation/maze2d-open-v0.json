@@ -1,0 +1,11 @@
+{
+    "general": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal general  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal1": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal1  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal2": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal2  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal3": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal3  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal4": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal4  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal5": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal5  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal6": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal6  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal7": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal7  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers",
+    "goal8": "python ./diffuser/rrf_diffusion/preprocess_dataset.py --dataset maze2d-open-v0 --goal goal8  --dataset_size 10m --version v1 --horizon 256 --datadir ./d4rl_datasets --savedir ./d4rl_preprocessed_buffers"
+}
